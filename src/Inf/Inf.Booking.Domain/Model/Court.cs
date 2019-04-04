@@ -1,17 +1,13 @@
 ﻿namespace Inf.Booking.Domain.Model
 {
-    public class Court
+    public class Court : DomainObject
     {
-
-
-        public Court(CourtType courtType)
+        public Court(int id, CourtType courtType)
         {
-
+            Id = id;
+            CourtType = courtType;
         }
 
-        public Court(CourtType courtType, int id)
-        {
-
-        }
+        public CourtType CourtType { get; }
     }
 }

@@ -1,10 +1,7 @@
 ﻿using Inf.Booking.Domain;
+using Inf.Booking.Infrastructure.Configuration;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Design;
 
 namespace Inf.Booking.Infrastructure
 {
@@ -19,6 +16,19 @@ namespace Inf.Booking.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder);
-        }  
+            modelBuilder.ApplyConfiguration(new BookingEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new CourtEntityConfiguration());
+        }
+    }
+
+    public class BookingContextDesignFactory : IDesignTimeDbContextFactory<BookingContext>
+    {
+        public BookingContext CreateDbContext(string[] args)
+        {
+            var optionsBuilder = new DbContextOptionsBuilder<BookingContext>()
+                .UseSqlServer("Data Source=.\\SQLExpress;Initial Catalog=InfDemo;MultipleActiveResultSets=True;Integrated Security=true;");
+
+            return new BookingContext(optionsBuilder.Options);
+        }
+    }
 }

@@ -1,45 +1,89 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Inf.Booking.Api.Application.Commands;
+using Inf.Booking.Api.Application.Queries;
+using Inf.Booking.Api.Infrastructure;
+using Inf.Booking.Domain.Model;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Net;
+using System.Threading.Tasks;
 
 namespace Inf.Booking.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/v1/[controller]")]
     [ApiController]
     public class BookingController : ControllerBase
     {
-        // GET api/values
+        private readonly IBookingQueries queries;
+        private readonly ICommandHandler<CreateBookingCommand> createBookingCommandHandler;
+        private readonly ICommandHandler<CancelBookingCommand> cancelBookingCommandHandler;
+
+        public BookingController(IBookingQueries queries, 
+            ICommandHandler<CreateBookingCommand> createBookingCommandHandler,
+            ICommandHandler<CancelBookingCommand> cancelBookingCommandHandler)
+        {
+            this.queries = queries;
+            this.createBookingCommandHandler = createBookingCommandHandler;
+            this.cancelBookingCommandHandler = cancelBookingCommandHandler;
+        }
+
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        [ProducesResponseType(typeof(IEnumerable<BookingSummaryDto>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult<IEnumerable<BookingSummaryDto>>> GetBookings()
         {
-            return new string[] { "value1", "value2" };
+            var bookings = await queries.GetBookings();
+            return Ok(bookings);
         }
 
-        // GET api/values/5
-        [HttpGet("{id}")]
-        public ActionResult<string> Get(int id)
+        [Route("{bookingId:int}")]
+        [HttpGet]
+        [ProducesResponseType(typeof(IEnumerable<BookingDetailDto>), (int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.NotFound)]
+        public async Task<ActionResult> GetBooking(int bookingId)
         {
-            return "value";
+            try
+            {
+                var bookings = await queries.GetBooking(bookingId);
+                return Ok(bookings);
+            }
+            catch
+            {
+                return NotFound();
+            }
         }
 
-        // POST api/values
         [HttpPost]
-        public void Post([FromBody] string value)
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> CreateBookingAsync([FromBody]CreateBookingCommand command)
         {
+            try
+            {
+                await createBookingCommandHandler.HandleAsync(command);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        [Route("cancel")]
+        [HttpPut]
+        [ProducesResponseType((int)HttpStatusCode.OK)]
+        [ProducesResponseType((int)HttpStatusCode.BadRequest)]
+        public async Task<IActionResult> CancelBookingAsync([FromBody]CancelBookingCommand command)
         {
-        }
-
-        // DELETE api/values/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            try
+            {
+                await cancelBookingCommandHandler.HandleAsync(command);
+                return Ok();
+            }
+            catch
+            {
+                return BadRequest();
+            }
         }
     }
 }

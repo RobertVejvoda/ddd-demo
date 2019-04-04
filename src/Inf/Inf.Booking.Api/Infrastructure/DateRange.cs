@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Threading.Tasks;
 
 namespace Inf.Booking.Api.Infrastructure
 {
+    [DataContract]
     public class DateRange
     {
         public DateRange(DateTime from, DateTime to)
@@ -18,8 +20,11 @@ namespace Inf.Booking.Api.Infrastructure
             To = to;
         }
 
-        public DateTime From { get; }
-        public DateTime To { get; }
+        [DataMember]
+        public DateTime From { get; private set; }
+
+        [DataMember]
+        public DateTime To { get; private set; }
 
         public double Minutes => (To - From).TotalMinutes;
     }

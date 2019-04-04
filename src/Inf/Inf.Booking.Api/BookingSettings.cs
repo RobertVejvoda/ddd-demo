@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inf.Booking.Domain
+namespace Inf.Booking.Api
 {
-    public interface IRepository<T> where T : IAggregateRoot
+    public class BookingSettings
     {
-        IUnitOfWork UnitOfWork { get; }
+        public string ConnectionString { get; set; }
     }
 }

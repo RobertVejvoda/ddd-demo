@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Inf.Booking.Domain.Events
 {
-    public class BookingCreatedEvent : IEvent
+    public class BookingCancelledEvent : IEvent
     {
-        public BookingCreatedEvent(Domain.Model.Booking booking)
+        public BookingCancelledEvent(Domain.Model.Booking booking)
         {
             Booking = booking;
         }

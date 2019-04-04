@@ -1,24 +1,26 @@
-﻿using Inf.Booking.Infrastructure;
+﻿using Inf.Booking.Domain.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace Inf.Booking.Api.Application.Commands
 {
-    public class CreateBookingCommand
+    [DataContract]
+    public class CreateBookingCommand : ICommand
     {
-        private readonly BookingRepository bookingRepository;
+        [DataMember]
+        public string PhoneNo { get; }
 
-        public CreateBookingCommand(BookingRepository bookingRepository)
+        [DataMember]
+        public int CourtId { get; }
+
+        [DataMember]
+        public DateTime BookedFrom { get; }
+
+        public CreateBookingCommand(string phoneNo, int courtId, DateTime bookedFrom)
         {
-            this.bookingRepository = bookingRepository;
-        }
-
-        public void Execute()
-        {
-
+            PhoneNo = phoneNo;
+            CourtId = courtId;
+            BookedFrom = bookedFrom;
         }
     }
 }

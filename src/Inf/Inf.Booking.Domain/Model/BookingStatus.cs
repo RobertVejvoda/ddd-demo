@@ -3,11 +3,12 @@
 namespace Inf.Booking.Domain.Model
 {
     [DataContract]
-    public enum CourtType
+    public enum BookingStatus
     {
         [EnumMember]
-        Squash = 1,
+        Active = 1,
+
         [EnumMember]
-        Badminton = 2
+        Cancelled = 2
     }
 }
