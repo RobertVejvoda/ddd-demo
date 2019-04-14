@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace Inf.Booking.Domain.Model
+namespace Inf.Core.Domain
 {
     public abstract class ValueObject
     {
@@ -16,7 +16,7 @@ namespace Inf.Booking.Domain.Model
 
         protected static bool NotEqualOperator(ValueObject left, ValueObject right)
         {
-            return !(EqualOperator(left, right));
+            return !EqualOperator(left, right);
         }
 
         protected abstract IEnumerable<object> GetAtomicValues();
@@ -53,7 +53,7 @@ namespace Inf.Booking.Domain.Model
 
         public ValueObject GetCopy()
         {
-            return this.MemberwiseClone() as ValueObject;
+            return MemberwiseClone() as ValueObject;
         }
     }
 }

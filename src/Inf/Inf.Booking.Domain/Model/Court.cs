@@ -1,4 +1,6 @@
-﻿namespace Inf.Booking.Domain.Model
+﻿using Inf.Core.Domain;
+
+namespace Inf.Booking.Domain.Model
 {
     public class Court : DomainObject
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Inf.Booking.Infrastructure.Exceptions
+namespace Inf.Core.Exceptions
 {
     [Serializable]
     public class DomainObjectNotFoundException : Exception

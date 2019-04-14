@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Inf.Booking.Api.Contracts.Queries;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Inf.Booking.Api.Application.Queries

@@ -1,8 +1,7 @@
-﻿using Inf.Booking.Domain;
-using Inf.Booking.Domain.Events;
+﻿using Inf.Booking.Domain.Events;
 using Inf.Booking.Domain.Model;
 using Inf.Booking.Infrastructure.Entities;
-using Inf.Booking.Infrastructure.Exceptions;
+using Inf.Core.Infrastructure;
 using System;
 using System.Threading.Tasks;
 

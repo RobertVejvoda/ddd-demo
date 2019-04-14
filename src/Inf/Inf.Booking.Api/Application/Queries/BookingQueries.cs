@@ -1,7 +1,9 @@
-﻿using Inf.Booking.Domain.Model;
+﻿using Inf.Booking.Api.Contracts.Queries;
+using Inf.Booking.Domain.Model;
 using Inf.Booking.Infrastructure;
 using Inf.Booking.Infrastructure.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,10 +27,12 @@ namespace Inf.Booking.Api.Application.Queries
                     BookingId = x.Id,
                     PhoneNo = x.PhoneNo,
                     CourtId = x.Court.Id,
-                    CourtType = (CourtType) x.Court.CourtType,
+                    CourtTypeId = x.Court.CourtType,
+                    CourtType = Enum.GetName(typeof(CourtType), x.Court.CourtType),
                     BookedFrom = x.BookedFrom,
                     BookedTo = x.BookedTo,
-                    Status = (BookingStatus) x.Status
+                    BookingStatusId = x.Status,
+                    BookingStatus = Enum.GetName(typeof(BookingStatus), x.Status)
                 })
                 .AsNoTracking()
                 .ToListAsync();
@@ -43,14 +47,17 @@ namespace Inf.Booking.Api.Application.Queries
                     BookingId = x.Id,
                     PhoneNo = x.PhoneNo,
                     CourtId = x.Court.Id,
-                    CourtType = (CourtType)x.Court.CourtType,
+                    CourtTypeId = x.Court.CourtType,
+                    CourtType = Enum.GetName(typeof(CourtType), x.Court.CourtType),
                     BookedFrom = x.BookedFrom,
                     BookedTo = x.BookedTo,
-                    Status = (BookingStatus)x.Status,
+                    BookingStatusId = x.Status,
+                    BookingStatus = Enum.GetName(typeof(BookingStatus), x.Status),
                     CreatedBy = x.CreatedBy,
                     CreatedDate = x.CreatedDate,
 
                 })
+                .AsNoTracking()
                 .SingleOrDefaultAsync();
         }
     }

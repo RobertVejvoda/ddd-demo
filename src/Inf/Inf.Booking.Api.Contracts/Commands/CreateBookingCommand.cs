@@ -1,8 +1,8 @@
-﻿using Inf.Booking.Domain.Model;
+﻿using Inf.Core.Commands;
 using System;
 using System.Runtime.Serialization;
 
-namespace Inf.Booking.Api.Application.Commands
+namespace Inf.Booking.Api.Contracts.Commands
 {
     [DataContract]
     public class CreateBookingCommand : ICommand

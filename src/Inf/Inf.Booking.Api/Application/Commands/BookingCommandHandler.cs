@@ -1,5 +1,7 @@
-﻿using Inf.Booking.Domain.Model;
+﻿using Inf.Booking.Api.Contracts.Commands;
+using Inf.Booking.Domain.Model;
 using Inf.Booking.Infrastructure.Repository;
+using Inf.Core.Commands;
 using System;
 using System.Threading;
 using System.Threading.Tasks;

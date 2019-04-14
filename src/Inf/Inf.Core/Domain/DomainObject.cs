@@ -1,9 +1,8 @@
-﻿using Inf.Booking.Domain.Events;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Inf.Booking.Domain.Model
+namespace Inf.Core.Domain
 {
     public abstract class DomainObject
     {
@@ -34,7 +33,7 @@ namespace Inf.Booking.Domain.Model
             if (obj == null || !(obj is DomainObject))
                 return false;
 
-            if (Object.ReferenceEquals(this, obj))
+            if (ReferenceEquals(this, obj))
                 return true;
 
             if (GetType() != obj.GetType())
@@ -63,8 +62,8 @@ namespace Inf.Booking.Domain.Model
         }
         public static bool operator ==(DomainObject left, DomainObject right)
         {
-            if (Object.Equals(left, null))
-                return (Object.Equals(right, null)) ? true : false;
+            if (Equals(left, null))
+                return Equals(right, null) ? true : false;
             else
                 return left.Equals(right);
         }

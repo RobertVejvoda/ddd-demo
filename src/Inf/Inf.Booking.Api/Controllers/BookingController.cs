@@ -1,9 +1,8 @@
-﻿using Inf.Booking.Api.Application.Commands;
-using Inf.Booking.Api.Application.Queries;
-using Inf.Booking.Api.Infrastructure;
-using Inf.Booking.Domain.Model;
+﻿using Inf.Booking.Api.Application.Queries;
+using Inf.Booking.Api.Contracts.Commands;
+using Inf.Booking.Api.Contracts.Queries;
+using Inf.Core.Commands;
 using Microsoft.AspNetCore.Mvc;
-using System;
 using System.Collections.Generic;
 using System.Net;
 using System.Threading.Tasks;

@@ -1,5 +1,5 @@
-﻿using Inf.Booking.Domain;
-using Inf.Booking.Infrastructure.Configuration;
+﻿using Inf.Booking.Infrastructure.Configuration;
+using Inf.Core.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 

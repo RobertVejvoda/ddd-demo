@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Inf.Booking.Domain.Events
+namespace Inf.Core.Domain
 {
     public interface IEvent
     {

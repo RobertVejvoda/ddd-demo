@@ -1,0 +1,19 @@
+﻿@viewModel Inf.Web.Bookings.BookingsViewModel
+@masterPage Global/Layout.dotmaster
+
+ <dot:Content ContentPlaceHolderID="MainContent">
+      
+      <p>Bookings</p>
+
+      <bs:GridView DataSource="{value: Bookings}">
+          <Columns>
+              <dot:GridViewTextColumn HeaderText="ID" ValueBinding="{value: BookingId}" />
+              <dot:GridViewTextColumn HeaderText="Phone" ValueBinding="{value: PhoneNo}" />
+              <dot:GridViewTextColumn HeaderText="Booked From" ValueBinding="{value: BookedFrom}" />
+              <dot:GridViewTextColumn HeaderText="Booked To" ValueBinding="{value: BookedTo}" />
+              <dot:GridViewTextColumn HeaderText="Court ID" ValueBinding="{value: CourtId}" />
+              <dot:GridViewTextColumn HeaderText="Court" ValueBinding="{value: CourtType}" />
+              <dot:GridViewTextColumn HeaderText="Status" ValueBinding="{value: BookingStatus}" />
+          </Columns>
+      </bs:GridView>
+ </dot:Content>

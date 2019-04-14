@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using Inf.Core.Commands;
 using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Inf.Booking.Api.Application.Commands
+namespace Inf.Booking.Api.Contracts.Commands
 {
     [DataContract]
     public class CancelBookingCommand : ICommand

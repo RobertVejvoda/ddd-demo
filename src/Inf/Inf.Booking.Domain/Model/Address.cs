@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Inf.Core.Domain;
+using System.Collections.Generic;
 
 namespace Inf.Booking.Domain.Model
 {

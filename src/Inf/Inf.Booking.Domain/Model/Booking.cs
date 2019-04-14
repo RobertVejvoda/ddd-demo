@@ -1,4 +1,5 @@
 ﻿using Inf.Booking.Domain.Events;
+using Inf.Core.Domain;
 using System;
 
 namespace Inf.Booking.Domain.Model

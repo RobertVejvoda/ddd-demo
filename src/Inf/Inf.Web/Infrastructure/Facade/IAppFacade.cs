@@ -1,12 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Inf.Booking.Api.Application.Commands
+namespace Inf.Web.Infrastructure.Facade
 {
-    public interface ICommand
+    public interface IAppFacade
     {
     }
 }
